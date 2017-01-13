@@ -11,13 +11,13 @@ import AVFoundation
 
 class PlaySoundViewController: UIViewController {
     
+    //show duration and progress view
     @IBOutlet weak var recordedTime: UILabel!
-   
     @IBOutlet weak var pvProgressPlay: UIProgressView!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
-
     
+    //different pitch buttons
     @IBOutlet weak var snailButton: UIButton!
     @IBOutlet weak var rabbitButton: UIButton!
     @IBOutlet weak var chipmunkButton: UIButton!
@@ -25,20 +25,21 @@ class PlaySoundViewController: UIViewController {
     @IBOutlet weak var echoButton: UIButton!
     @IBOutlet weak var reverbButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
-    @IBOutlet weak var slVolumeLabel: UILabel!
-    @IBOutlet weak var slVolume: UISlider!
     
     var recordedAudioURL: URL!
     var audioFile: AVAudioFile!
-    var audioPlayer: AVAudioPlayer!
     var audioEngine: AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: Timer!
+    var progressTimer: Timer!
     
     let timePlayerSelector:Selector = #selector(PlaySoundViewController.updatePlayTime)
 
-    
+    //init duration time
     var durationTime = ""
+    var countProgress : Float = 0.0
+    var currentTime : Float = 0.0
+    var totalTime : Float = 0.0
 
     enum ButtonType: Int { case slow = 0, fast, chipmunk, vader, echo, reverb}
     
@@ -62,7 +63,8 @@ class PlaySoundViewController: UIViewController {
             playSound(reverb: true)
         }
         configureUI(.playing)
-        
+
+        progressTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: timePlayerSelector, userInfo:nil, repeats:true)
     }
     
     @IBAction func stopButtonPressed(_ sender: AnyObject)
@@ -76,28 +78,39 @@ class PlaySoundViewController: UIViewController {
         setupAudio()
         
     }
-    func convertNSTimerInterval2String(time:TimeInterval) -> String{
-        let min = Int(time/60)
-        let sec = Int((time.truncatingRemainder(dividingBy: 60)))
-        let strTime = String(format: "%02d:%02d", min, sec)
-        return strTime
-    }
     
-    func updatePlayTime(){
-        startTimeLabel.text = convertNSTimerInterval2String(time: audioPlayer.currentTime)
-        print(audioPlayer.currentTime)
-        pvProgressPlay.progress = Float(audioPlayer.currentTime/audioPlayer.duration)
+    func updatePlayTime()
+    {
+        currentTimeCal()
+        //start time label update
+        startTimeLabel.text = convertNSTimerInterval2String(time:TimeInterval(currentTime))
         
+        //progressview update
+        totalTime = Float(Float(audioFile.length) / Float(audioFile.fileFormat.sampleRate))
+        pvProgressPlay.progress = Float(currentTime/totalTime)
+    }
+   
+    //calculate current play time
+    func currentTimeCal()
+    {
+        if let lastRenderTime = audioPlayerNode.lastRenderTime, let playerTime = audioPlayerNode.playerTime(forNodeTime: lastRenderTime){
+            currentTime = Float(Double(playerTime.sampleTime) / playerTime.sampleRate)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI(.notPlaying)
     }
-    
-    @IBAction func slChangeVolume(_ sender: UISlider) {
-        audioPlayerNode.volume = slVolume.value
+   
+    //convert to string 
+    func convertNSTimerInterval2String(time:TimeInterval) -> String{
+        let min = Int(time/60)
+        let sec = Int((time.truncatingRemainder(dividingBy: 60)))
+        let strTime = String(format: "%02d:%02d", min, sec)
+        return strTime
     }
+
     
     /*
     // MARK: - Navigation

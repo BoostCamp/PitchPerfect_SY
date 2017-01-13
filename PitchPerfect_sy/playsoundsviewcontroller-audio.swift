@@ -37,27 +37,15 @@ extension PlaySoundViewController: AVAudioPlayerDelegate {
     
     func setupAudio() {
         // initialize (recording) audio file
- /*       do {
+      do {
             audioFile = try AVAudioFile(forReading: recordedAudioURL as URL)
         } catch {
             showAlert(Alerts.AudioFileError, message: String(describing: error))
         }
         
-    */
-        do{
-            audioFile = try AVAudioFile(forReading: recordedAudioURL as URL)
-            audioPlayer = try AVAudioPlayer(contentsOf: recordedAudioURL as URL)
-        }
-        catch
-        {
-            showAlert(Alerts.AudioFileError, message: String(describing: error))
-        }
-        
-        
-        //progressview init
+        //progressview initialize
         pvProgressPlay.progress = 0
         endTimeLabel.text = durationTime
-        print(durationTime)
         startTimeLabel.text = convertNSTimerInterval2String(time: 0 )
         
     }
