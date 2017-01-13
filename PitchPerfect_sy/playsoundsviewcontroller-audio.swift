@@ -12,6 +12,8 @@ import AVFoundation
 
 extension PlaySoundViewController: AVAudioPlayerDelegate {
     
+       
+    
     // MARK: Alerts
     
     struct Alerts {
@@ -35,11 +37,29 @@ extension PlaySoundViewController: AVAudioPlayerDelegate {
     
     func setupAudio() {
         // initialize (recording) audio file
-        do {
+ /*       do {
             audioFile = try AVAudioFile(forReading: recordedAudioURL as URL)
         } catch {
             showAlert(Alerts.AudioFileError, message: String(describing: error))
-        }        
+        }
+        
+    */
+        do{
+            audioFile = try AVAudioFile(forReading: recordedAudioURL as URL)
+            audioPlayer = try AVAudioPlayer(contentsOf: recordedAudioURL as URL)
+        }
+        catch
+        {
+            showAlert(Alerts.AudioFileError, message: String(describing: error))
+        }
+        
+        
+        //progressview init
+        pvProgressPlay.progress = 0
+        endTimeLabel.text = durationTime
+        print(durationTime)
+        startTimeLabel.text = convertNSTimerInterval2String(time: 0 )
+        
     }
     
     func playSound(rate: Float? = nil, pitch: Float? = nil, echo: Bool = false, reverb: Bool = false) {
@@ -112,7 +132,9 @@ extension PlaySoundViewController: AVAudioPlayerDelegate {
         
         // play the recording!
         audioPlayerNode.play()
+        
     }
+
     
     func stopAudio() {
         
@@ -167,4 +189,6 @@ extension PlaySoundViewController: AVAudioPlayerDelegate {
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+
 }
