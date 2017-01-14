@@ -6,7 +6,7 @@ There are two main functions and additional features added for this app.
 ###Main Functions.  
 1. Record Sound.    
 By tapping microphone image, the recording begins.    
-2. Play the recorded Sound back with 6 different effects.
+2. Play the recorded Sound back with 6 different effects.  
 The effects are:
 * high-pitch sound
 * low-pitch sound
