@@ -7,13 +7,12 @@ There are two main functions and additional features added for this app.
 1. Record Sound.    
 By tapping microphone image, the recording begins.    
 2. Play the recorded Sound back with 6 different effects.  
-The effects are:
-* high-pitch sound
-* low-pitch sound
-* slow sound
-* fast sound
-* reverb sound
-* echo sound
+  * high-pitch sound
+  * low-pitch sound
+  * slow sound
+  * fast sound
+  * reverb sound
+  * echo sound
 
 ###Additional Features.   
 * Shows recording time while recording in RecordSoundViewController.
