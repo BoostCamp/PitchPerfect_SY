@@ -21,6 +21,7 @@ There are two main functions and additional features added for this app.
 
 ---
 ## Screenshots
+<img src= "./image/스크린샷 2017-02-26 오후 10.59.54.png", width = "250">    <img src= "./image/스크린샷 2017-02-26 오후 11.00.09.png", width = "250">
 
 ---
 ## Additional Features. 
@@ -30,4 +31,4 @@ There are two main functions and additional features added for this app.
 --
 ## Demo Video Link . 
 [PitchPerctApp](https://www.youtube.com/watch?v=Z5eMroswM-c)
-
+[![Alt text for your video](http://i67.tinypic.com/ny8dvm.png)](https://www.youtube.com/watch?v=Z5eMroswM-c)
