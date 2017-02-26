@@ -21,7 +21,7 @@ There are two main functions and additional features added for this app.
 
 ---
 ## Screenshots
-<img src= "./image/스크린샷 2017-02-26 오후 10.59.54.png", width = "250">    <img src= "./image/스크린샷 2017-02-26 오후 11.00.09.png", width = "250">
+<img src= "./image/first.png", width = "250">  <img src= "./image/second.png", width = "250">
 
 ---
 ## Additional Features. 
