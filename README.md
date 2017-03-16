@@ -21,7 +21,7 @@ There are two main functions and additional features added for this app.
 
 ---
 ## Screenshots
-[screenshot](./image/1.PNG) 
+![screenshot](./image/1.png) 
 
 ---
 ## Additional Features. 
