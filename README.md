@@ -1,5 +1,5 @@
 # PitchPerfect_sy
-###SUMMARY
+### SUMMARY
 >This is my first iOS Application in Swift.  
 
 PitchPerfect is an app that record user's voice with using AVAudioRecorder and play back sound with 6 different effects. For addtional features, used AVAudioPlayer for show duration of the recorded audio and show pregressview as well.
@@ -21,7 +21,7 @@ There are two main functions and additional features added for this app.
 
 ---
 ## Screenshots
-<img src= "./image/first.png", width = "250">  <img src= "./image/second.png", width = "250">
+![screenshot](./image/first.png) ![screenshot](./image/second.png) 
 
 ---
 ## Additional Features. 
