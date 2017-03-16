@@ -21,7 +21,7 @@ There are two main functions and additional features added for this app.
 
 ---
 ## Screenshots
-<img src = "./image/first.png", width= "250">
+![screenshot](./image/first.png | width=250) 
 
 ---
 ## Additional Features. 
